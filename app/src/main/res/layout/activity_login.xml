@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_shadow_start_color"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+  <TextView
+      android:id="@+id/login"
+      android:layout_width="278dp"
+      android:layout_height="64dp"
+      android:layout_marginTop="28dp"
+      android:text="로그인"
+      android:textColor="#000000"
+      android:textSize="30sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.12"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/id"
+      android:layout_width="295dp"
+      android:layout_height="56dp"
+      android:layout_marginTop="8dp"
+      android:text="아이디"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.224"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/login" />
+
+  <EditText
+      android:id="@+id/id_input"
+      android:layout_width="240dp"
+      android:layout_height="60dp"
+      android:ems="10"
+      android:gravity="center"
+      android:hint="아이디를 입력하세요."
+      android:inputType="textPersonName"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.315"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/id" />
+
+  <TextView
+      android:id="@+id/pwd"
+      android:layout_width="295dp"
+      android:layout_height="56dp"
+      android:layout_marginTop="24dp"
+      android:text="비밀번호"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.224"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/id_input" />
+
+  <EditText
+      android:id="@+id/pwd_input"
+      android:layout_width="240dp"
+      android:layout_height="60dp"
+      android:layout_marginTop="8dp"
+      android:ems="10"
+      android:gravity="center"
+      android:hint="비밀번호를 입력하세요."
+      android:inputType="textPersonName"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.224"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/pwd" />
+
+  <TextView
+      android:id="@+id/join_text"
+      android:layout_width="218dp"
+      android:layout_height="46dp"
+      android:layout_marginTop="76dp"
+      android:text="아직 회원이 아니신가요?"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toStartOf="@+id/join_btn"
+      app:layout_constraintHorizontal_bias="0.9"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/pwd_input" />
+
+  <Button
+      android:id="@+id/join_btn"
+      android:layout_width="125dp"
+      android:layout_height="50dp"
+      android:layout_marginTop="72dp"
+      android:layout_marginEnd="8dp"
+      android:background="@drawable/rounded_corner"
+      android:text="회원가입"
+      android:textSize="20sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/pwd_input" />
+
+  <TextView
+      android:id="@+id/qna"
+      android:layout_width="310dp"
+      android:layout_height="44dp"
+      android:layout_marginTop="16dp"
+      android:text="전문가 회원가입시 이메일로 문의바랍니다. 1234@xxx.com"
+      android:autoLink="email"
+      android:textSize="17sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.673"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/join_text" />
+
+  <Button
+      android:id="@+id/login_btn"
+      android:layout_width="275dp"
+      android:layout_height="64dp"
+      android:layout_marginTop="48dp"
+      android:text="로그인 하기"
+      android:textSize="24sp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/qna" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_shadow_start_color"
+    tools:context=".AIChatActivity">
+
+    <TextView
+        android:id="@+id/ai_chat"
+        android:layout_width="278dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="28dp"
+        android:text="AI 채팅하기"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/talk"
+        android:layout_width="295dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="talk"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ai_chat" />
+
+    <TextView
+        android:id="@+id/response"
+        android:layout_width="295dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="반응"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/talk" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
