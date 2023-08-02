@@ -1,7 +1,7 @@
 package com.example.child_emotion_app.data
 
 data class MessageResponse(
-    val bot: BotData
+    val bot: String
 )
 
 data class BotData(

@@ -32,7 +32,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         val login : Button = findViewById(R.id.login_btn)
-
         val join : Button = findViewById(R.id.join_btn)
 
         login.setOnClickListener {

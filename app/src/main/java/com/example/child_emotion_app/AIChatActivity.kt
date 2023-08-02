@@ -61,7 +61,7 @@ class AIChatActivity : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         // 서버 응답을 확인하는 작업 수행
-                        val responseData = responseBody.bot.bot
+                        val responseData = responseBody.bot
                         responses.text = responseData
                     } else {
                         Log.e("@@@@Error3", "Response body is null")
