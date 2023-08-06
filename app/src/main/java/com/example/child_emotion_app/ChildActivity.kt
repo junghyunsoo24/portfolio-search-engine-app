@@ -8,9 +8,10 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.child_emotion_app.databinding.ActivityChildBinding
+import com.example.child_emotion_app.model.AppViewModel
 
 class ChildActivity : AppCompatActivity() {
-    private lateinit var userId: String
+    private lateinit var viewModel: AppViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_child)
@@ -23,8 +24,9 @@ class ChildActivity : AppCompatActivity() {
         val binding = ActivityChildBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userId = intent.getStringExtra("userId").toString()
-        Log.e("child", userId)
+        viewModel = AppViewModel.getInstance()
+
+        viewModel.getUserId().value?.let { Log.e("child", it) }
 
         binding.aiBtn.setOnClickListener {
             onAIButtonClicked()
@@ -40,7 +42,6 @@ class ChildActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.mypage_btn -> {
                 val intent = Intent(this, MypageActivity::class.java)
-                intent.putExtra("userId", userId)
                 startActivity(intent)
                 return true
             }

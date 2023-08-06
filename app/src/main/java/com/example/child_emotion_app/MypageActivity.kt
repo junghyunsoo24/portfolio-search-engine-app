@@ -7,9 +7,11 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.child_emotion_app.databinding.ActivityMypageBinding
+import com.example.child_emotion_app.model.AppViewModel
 
 class MypageActivity : AppCompatActivity() {
-    private lateinit var userId: String
+    private lateinit var id: String
+    private lateinit var viewModel: AppViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_mypage)
@@ -22,9 +24,10 @@ class MypageActivity : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
 
-        userId = intent.getStringExtra("userId").toString()
-        binding.memberId.text = "아이디: " + userId
-        Log.e("mypage", userId)
+        viewModel = AppViewModel.getInstance()
+
+        binding.memberId.text = "아이디: " + viewModel.getUserId().value
+        viewModel.getUserId().value?.let { Log.e("mypage", it) }
 
         binding.logoutBtn.setOnClickListener {
             val builder = AlertDialog.Builder(this)

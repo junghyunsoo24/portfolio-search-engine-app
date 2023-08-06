@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class AppViewModel : ViewModel() {
+class AppViewModel private constructor() : ViewModel() {
     private val jwtTokenLiveData = MutableLiveData<String>()
 
     private val userIdLiveData = MutableLiveData<String>()
@@ -34,6 +34,14 @@ class AppViewModel : ViewModel() {
         return userPwdLiveData
     }
 
+    companion object {
+        private var instance: AppViewModel? = null
 
-
+        fun getInstance(): AppViewModel {
+            if (instance == null) {
+                instance = AppViewModel()
+            }
+            return instance!!
+        }
+    }
 }

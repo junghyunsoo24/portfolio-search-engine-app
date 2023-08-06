@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_login)
 
-        viewModel = ViewModelProvider(this)[AppViewModel::class.java]
+        viewModel = AppViewModel.getInstance()
 
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -75,7 +75,6 @@ class LoginActivity : AppCompatActivity() {
 
     fun onLoginButtonClicked() {
         val intent = Intent(this, ChildActivity::class.java)
-        intent.putExtra("userId", viewModel.getUserId().value)
         startActivity(intent)
     }
 
