@@ -1,15 +1,16 @@
 package com.example.child_emotion_app
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.example.child_emotion_app.databinding.ActivityChildBinding
 
 class ChildActivity : AppCompatActivity() {
+    private lateinit var userId: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_child)
@@ -21,13 +22,13 @@ class ChildActivity : AppCompatActivity() {
 
         val binding = ActivityChildBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        userId = intent.getStringExtra("userId").toString()
+        Log.e("child", userId)
+
         binding.aiBtn.setOnClickListener {
             onAIButtonClicked()
         }
-
-        //val AI_chat : Button = findViewById(R.id.AI_btn)
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -39,6 +40,7 @@ class ChildActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.mypage_btn -> {
                 val intent = Intent(this, MypageActivity::class.java)
+                intent.putExtra("userId", userId)
                 startActivity(intent)
                 return true
             }
@@ -50,7 +52,4 @@ class ChildActivity : AppCompatActivity() {
         val intent = Intent(this, AIChatActivity::class.java)
         startActivity(intent)
     }
-
-
-
 }
