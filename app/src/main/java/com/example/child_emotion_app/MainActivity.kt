@@ -3,26 +3,37 @@ package com.example.child_emotion_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
 import com.example.child_emotion_app.databinding.ActivityMainBinding
-
-//import com.example.navigatepractice.databinding.ActivityMainBinding
+import com.example.child_emotion_app.model.AppViewModel
 
 class MainActivity : AppCompatActivity() {
-//    lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: AppViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+
+        viewModel = AppViewModel.getInstance()
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //val start : Button = findViewById(R.id.start_btn)
-
-         binding.startBtn.setOnClickListener {
+         binding.childBtn.setOnClickListener {
+             viewModel.setUser("0")
             onStartButtonClicked()
         }
 
+        binding.expertBtn.setOnClickListener {
+            viewModel.setUser("1")
+            onStartButtonClicked()
+        }
+
+        binding.managerBtn.setOnClickListener {
+            viewModel.setUser("2")
+            onStartButtonClicked()
+        }
+
+        viewModel.getUser().value?.let { Log.e("user", it) }
     }
 
     fun onStartButtonClicked() {

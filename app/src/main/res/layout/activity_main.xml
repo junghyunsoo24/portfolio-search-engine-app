@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/cardview_shadow_start_color">
+    android:background="@color/cardview_shadow_start_color"
+    tools:context=".MainActivity">
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="158dp"
         android:layout_height="134dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:id="@+id/sub_title"
         android:layout_width="295dp"
         android:layout_height="56dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="56dp"
         android:gravity="center"
         android:text="아동학대 모니터링"
         android:textSize="35sp"
@@ -47,16 +47,35 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <Button
-        android:id="@+id/start_btn"
+        android:id="@+id/child_btn"
         android:layout_width="275dp"
         android:layout_height="64dp"
-        android:layout_marginTop="112dp"
-        android:text="시작하기"
+        android:layout_marginTop="44dp"
+        android:text="아동으로 시작하기"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sub_title" />
+
+    <Button
+        android:id="@+id/expert_btn"
+        android:layout_width="275dp"
+        android:layout_height="64dp"
+        android:text="전문가로 시작하기"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/child_btn" />
+
+    <Button
+        android:id="@+id/manager_btn"
+        android:layout_width="275dp"
+        android:layout_height="64dp"
+        android:text="관리자로 시작하기"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expert_btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

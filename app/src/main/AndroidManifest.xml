@@ -21,7 +21,6 @@
             android:parentActivityName=".ChildActivity"/>
         <activity
             android:name=".MypageActivity"
-            android:label="My Page"
             android:parentActivityName=".AIChatActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

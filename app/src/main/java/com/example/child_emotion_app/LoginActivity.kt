@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.child_emotion_app.data.Login
 import com.example.child_emotion_app.databinding.ActivityLoginBinding
@@ -24,7 +23,6 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_login)
 
         viewModel = AppViewModel.getInstance()
 
@@ -49,6 +47,8 @@ class LoginActivity : AppCompatActivity() {
         join.setOnClickListener {
             onJoinButtonClicked()
         }
+
+        viewModel.getUser().value?.let { Log.e("user", it) }
     }
 
     private fun showAlertDialog(message: String) {
@@ -59,14 +59,14 @@ class LoginActivity : AppCompatActivity() {
             builder.setTitle("로그인 성공")
             builder.setMessage("다음 화면으로 이동합니다")
             builder.setPositiveButton("확인") { dialog, _ ->
-                dialog.dismiss() // 다이얼로그를 닫습니다.
-                onLoginButtonClicked() // 다음 화면으로 넘어가는 함수 호출
+                dialog.dismiss()
+                onLoginButtonClicked()
             }
         } else {
             builder.setTitle("로그인 실패")
             builder.setMessage("다시 입력하세요")
             builder.setPositiveButton("확인") { dialog, _ ->
-                dialog.dismiss() // 다이얼로그를 닫습니다.
+                dialog.dismiss()
             }
         }
 
@@ -91,11 +91,10 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        // 서버 응답을 확인하는 작업 수행
                         val responseData = responseBody.result
                         showAlertDialog(responseData)
 
-                        viewModel.setUserId(id) // "responseData"가 "0"일 때 "id"를 ViewModel로 저장
+                        viewModel.setUserId(id)
                         viewModel.setUserPwd(pw)
                     } else {
                         Log.e("@@@@Error3", "Response body is null")

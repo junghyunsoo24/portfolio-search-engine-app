@@ -104,11 +104,11 @@
       android:layout_width="310dp"
       android:layout_height="44dp"
       android:layout_marginTop="16dp"
-      android:text="전문가 회원가입시 이메일로 문의바랍니다. 1234@xxx.com"
       android:autoLink="email"
+      android:text="전문가 회원가입시 이메일로 문의바랍니다. 1234@xxx.com"
       android:textSize="17sp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.673"
+      app:layout_constraintHorizontal_bias="0.495"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/join_text" />
 
