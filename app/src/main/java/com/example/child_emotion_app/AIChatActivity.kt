@@ -23,12 +23,14 @@ class AIChatActivity : AppCompatActivity() {
 
     private lateinit var adapter: MessageAdapter
     private val messages = mutableListOf<String>()
+    private lateinit var binding: ActivityAichatBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_aichat)
 
-        val binding = ActivityAichatBinding.inflate(layoutInflater)
+        binding = ActivityAichatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         adapter = MessageAdapter(messages)
@@ -90,6 +92,7 @@ class AIChatActivity : AppCompatActivity() {
                         messages.add(input)
                         messages.add(responseData)
                         adapter.notifyDataSetChanged()
+                        scrollToBottom()
 
                     } else {
                         Log.e("@@@@Error3", "Response body is null")
@@ -100,6 +103,12 @@ class AIChatActivity : AppCompatActivity() {
             } catch (Ex: Exception) {
                 Log.e("@@@@Error1", Ex.stackTraceToString())
             }
+        }
+    }
+
+    private fun scrollToBottom() {
+        binding.chatRecyclerView.post {
+            binding.chatRecyclerView.smoothScrollToPosition(adapter.itemCount - 1)
         }
     }
 }
