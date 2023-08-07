@@ -1,12 +1,14 @@
-package com.example.child_emotion_app
+package com.example.child_emotion_app.child
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.child_emotion_app.AIChatActivity
+import com.example.child_emotion_app.MypageActivity
+import com.example.child_emotion_app.R
 import com.example.child_emotion_app.databinding.ActivityChildBinding
 import com.example.child_emotion_app.model.AppViewModel
 
@@ -14,7 +16,6 @@ class ChildActivity : AppCompatActivity() {
     private lateinit var viewModel: AppViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_child)
 
         val actionBar: ActionBar? = supportActionBar
         if (actionBar != null) {
@@ -25,8 +26,6 @@ class ChildActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = AppViewModel.getInstance()
-
-        viewModel.getUserId().value?.let { Log.e("child", it) }
 
         binding.aiBtn.setOnClickListener {
             onAIButtonClicked()

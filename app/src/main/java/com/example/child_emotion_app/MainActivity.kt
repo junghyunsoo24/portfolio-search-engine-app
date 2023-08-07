@@ -3,7 +3,6 @@ package com.example.child_emotion_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.child_emotion_app.databinding.ActivityMainBinding
 import com.example.child_emotion_app.model.AppViewModel
 
@@ -32,8 +31,6 @@ class MainActivity : AppCompatActivity() {
             viewModel.setUser("2")
             onStartButtonClicked()
         }
-
-        viewModel.getUser().value?.let { Log.e("user", it) }
     }
 
     fun onStartButtonClicked() {

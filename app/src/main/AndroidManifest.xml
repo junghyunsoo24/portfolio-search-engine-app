@@ -18,7 +18,7 @@
         <activity
             android:name=".AIChatActivity"
             android:exported="false"
-            android:parentActivityName=".ChildActivity"/>
+            android:parentActivityName=".child.ChildActivity"/>
         <activity
             android:name=".MypageActivity"
             android:parentActivityName=".AIChatActivity">
@@ -28,7 +28,15 @@
         </activity>
 
         <activity
-            android:name=".ChildActivity"
+            android:name=".child.ChildActivity"
+            android:exported="false"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".expert.ExpertActivity"
+            android:exported="false"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".manager.ManagerActivity"
             android:exported="false"
             android:parentActivityName=".LoginActivity" />
         <activity

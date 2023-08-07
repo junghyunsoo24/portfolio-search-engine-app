@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFE0"
-    tools:context=".child.ChildActivity">
+    tools:context=".expert.ExpertActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="158dp"
         android:layout_height="134dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,14 +22,14 @@
         android:id="@+id/title"
         android:layout_width="278dp"
         android:layout_height="64dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="52dp"
         android:gravity="center"
         android:text="하루 친구"
         android:textColor="#000000"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -37,35 +37,34 @@
         android:id="@+id/sub_title"
         android:layout_width="295dp"
         android:layout_height="56dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="52dp"
         android:gravity="center"
         android:text="아동학대 모니터링"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <Button
-        android:id="@+id/ai_btn"
-        android:layout_width="275dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="24dp"
-        android:text="AI 채팅하기"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expert_btn" />
-
-    <Button
-        android:id="@+id/expert_btn"
+        android:id="@+id/all_child_btn"
         android:layout_width="275dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
-        android:text="전문가 채팅하기"
+        android:text="아동 목록 조회"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sub_title" />
+
+    <Button
+        android:id="@+id/one_child_btn"
+        android:layout_width="275dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="24dp"
+        android:text="특정 아동 통계 조회"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/all_child_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

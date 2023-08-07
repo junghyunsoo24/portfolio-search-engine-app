@@ -4,20 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.child_emotion_app.child.ChildActivity
 import com.example.child_emotion_app.data.Login
 import com.example.child_emotion_app.databinding.ActivityLoginBinding
+import com.example.child_emotion_app.expert.ExpertActivity
+import com.example.child_emotion_app.manager.ManagerActivity
 import com.example.child_emotion_app.model.AppViewModel
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var id: String
     private lateinit var pw: String
-    private lateinit var responses: TextView
 
     private lateinit var viewModel: AppViewModel
 
@@ -40,7 +41,6 @@ class LoginActivity : AppCompatActivity() {
         login.setOnClickListener {
             id = binding.idInput.text.toString()
             pw = binding.pwdInput.text.toString()
-            responses = binding.loginResult
             mobileToServer()
         }
 
@@ -52,8 +52,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showAlertDialog(message: String) {
-        Log.e("AlertDialog", "message: $message")
-
         val builder = AlertDialog.Builder(this)
         if (message == "0") {
             builder.setTitle("로그인 성공")
@@ -74,7 +72,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onLoginButtonClicked() {
-        val intent = Intent(this, ChildActivity::class.java)
+        val intent: Intent
+        if(viewModel.getUser().value == "0") {
+            intent = Intent(this, ChildActivity::class.java)
+        }
+        else if(viewModel.getUser().value == "1"){
+            intent = Intent(this, ExpertActivity::class.java)
+        }
+        else{
+            intent = Intent(this, ManagerActivity::class.java)
+        }
         startActivity(intent)
     }
 
