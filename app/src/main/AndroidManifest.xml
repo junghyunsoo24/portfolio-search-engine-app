@@ -22,7 +22,7 @@
         <activity
             android:name=".MypageActivity"
             android:exported="false"
-            android:parentActivityName=".ChildActivity" />
+            android:parentActivityName=".AIChatActivity" />
         <activity
             android:name=".ChildActivity"
             android:exported="false"

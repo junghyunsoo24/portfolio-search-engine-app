@@ -10,6 +10,8 @@ class AppViewModel private constructor() : ViewModel() {
     private val userIdLiveData = MutableLiveData<String>()
     private val userPwdLiveData = MutableLiveData<String>()
 
+    private val messageListLiveData = MutableLiveData<List<String>>()
+
     fun setJwtToken(token: String) {
         jwtTokenLiveData.value = token
     }
@@ -32,6 +34,14 @@ class AppViewModel private constructor() : ViewModel() {
 
     fun getUserPwd(): LiveData<String> {
         return userPwdLiveData
+    }
+
+    fun setMessageList(messages: List<String>) {
+        messageListLiveData.value = messages
+    }
+
+    fun getMessageList(): LiveData<List<String>> {
+        return messageListLiveData
     }
 
     companion object {

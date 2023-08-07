@@ -8,37 +8,35 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.child_emotion_app.data.Message
 import com.example.child_emotion_app.databinding.ActivityAichatBinding
+import com.example.child_emotion_app.model.AppViewModel
 import kotlinx.coroutines.launch
 
 class AIChatActivity : AppCompatActivity() {
     private lateinit var input: String
-//    private lateinit var responses: TextView
 
     private lateinit var adapter: MessageAdapter
     private val messages = mutableListOf<String>()
     private lateinit var binding: ActivityAichatBinding
 
+    private lateinit var viewModel: AppViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_aichat)
 
         binding = ActivityAichatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        viewModel = AppViewModel.getInstance()
+
         adapter = MessageAdapter(messages)
         binding.chatRecyclerView.adapter = adapter
         binding.chatRecyclerView.layoutManager = LinearLayoutManager(this)
-
-//        input = binding.talkInput.text.toString()
-//        responses = binding.response
 
         binding.talkInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -47,6 +45,8 @@ class AIChatActivity : AppCompatActivity() {
                 inputMethodManager.hideSoftInputFromWindow(binding.talkInput.windowToken, 0)
                 if (input.isNotBlank()) {
                     mobileToServer()
+
+                    binding.talkInput.text = null
                 }
                 true
             } else {
@@ -58,6 +58,9 @@ class AIChatActivity : AppCompatActivity() {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
+
+        Log.e("recycler", viewModel.getMessageList().value.toString())
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -86,14 +89,14 @@ class AIChatActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        // 서버 응답을 확인하는 작업 수행
                         val responseData = responseBody.bot
-//                        responses.text = responseData
                         messages.add(input)
                         messages.add(responseData)
                         adapter.notifyDataSetChanged()
-                        scrollToBottom()
 
+                        viewModel.setMessageList(messages)
+
+                        scrollToBottom()
                     } else {
                         Log.e("@@@@Error3", "Response body is null")
                     }
