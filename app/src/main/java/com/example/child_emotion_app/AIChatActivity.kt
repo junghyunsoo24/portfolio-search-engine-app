@@ -1,32 +1,56 @@
 package com.example.child_emotion_app
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.child_emotion_app.data.Message
+import com.example.child_emotion_app.databinding.ActivityAichatBinding
 import kotlinx.coroutines.launch
 
 class AIChatActivity : AppCompatActivity() {
-    val talks = "문장3"
-    private lateinit var responses: TextView
-    private lateinit var talk: TextView
+    private lateinit var input: String
+//    private lateinit var responses: TextView
 
+    private lateinit var adapter: MessageAdapter
+    private val messages = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_aichat)
+        //setContentView(R.layout.activity_aichat)
 
-        talk = findViewById(R.id.talk)
-        talk.text = talks
+        val binding = ActivityAichatBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        responses = findViewById(R.id.response)
-        mobileToServer()
+        adapter = MessageAdapter(messages)
+        binding.chatRecyclerView.adapter = adapter
+        binding.chatRecyclerView.layoutManager = LinearLayoutManager(this)
+
+//        input = binding.talkInput.text.toString()
+//        responses = binding.response
+
+        binding.talkInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                input = binding.talkInput.text.toString()
+                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(binding.talkInput.windowToken, 0)
+                if (input.isNotBlank()) {
+                    mobileToServer()
+                }
+                true
+            } else {
+                false
+            }
+        }
 
         val actionBar: ActionBar? = supportActionBar
         if (actionBar != null) {
@@ -53,7 +77,7 @@ class AIChatActivity : AppCompatActivity() {
     private fun mobileToServer() {
         lifecycleScope.launch {
             try {
-                val message = Message(talks)
+                val message = Message(input)
 
                 val response = MyApi.retrofitService.sendMessage(message)
 
@@ -62,7 +86,11 @@ class AIChatActivity : AppCompatActivity() {
                     if (responseBody != null) {
                         // 서버 응답을 확인하는 작업 수행
                         val responseData = responseBody.bot
-                        responses.text = responseData
+//                        responses.text = responseData
+                        messages.add(input)
+                        messages.add(responseData)
+                        adapter.notifyDataSetChanged()
+
                     } else {
                         Log.e("@@@@Error3", "Response body is null")
                     }
