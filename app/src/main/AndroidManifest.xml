@@ -21,8 +21,13 @@
             android:parentActivityName=".ChildActivity"/>
         <activity
             android:name=".MypageActivity"
-            android:exported="false"
-            android:parentActivityName=".AIChatActivity" />
+            android:label="My Page"
+            android:parentActivityName=".AIChatActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AIChatActivity" />
+        </activity>
+
         <activity
             android:name=".ChildActivity"
             android:exported="false"
