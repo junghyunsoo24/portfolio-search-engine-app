@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.child_emotion_app.AIChatActivity
 import com.example.child_emotion_app.MypageActivity
 import com.example.child_emotion_app.R
 import com.example.child_emotion_app.databinding.ActivityChildBinding

@@ -1,4 +1,4 @@
-package com.example.child_emotion_app.data
+package com.example.child_emotion_app.data.regist
 
 data class RegistResponse(
     val result: String

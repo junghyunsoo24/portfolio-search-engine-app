@@ -1,7 +1,7 @@
-package com.example.child_emotion_app
+package com.example.child_emotion_app.service.message
 
-import com.example.child_emotion_app.data.Regist
-import com.example.child_emotion_app.data.RegistResponse
+import com.example.child_emotion_app.data.message.Message
+import com.example.child_emotion_app.data.message.MessageResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.logging.HttpLoggingInterceptor
@@ -34,15 +34,15 @@ private val retrofit = Retrofit.Builder()
 //    .client(mOkHttpClient)    //logger(디버깅용으로 쓰는 것이고 없애도 지장이 없음)
     .build()
 
-interface RegistService {
+interface ApiService {
     @Headers("Content-Type: application/json")
 
-    @POST("/regist")
-    suspend fun sendsMessage(@Body message: Regist): Response<RegistResponse>
+    @POST("/chat")
+    suspend fun sendMessage(@Body message: Message): Response<MessageResponse>
 
 }
 
 
-object RegistApi {
-    val retrofitService: RegistService by lazy { retrofit.create(RegistService::class.java) }
+object MyApi {
+    val retrofitService: ApiService by lazy { retrofit.create(ApiService::class.java) }
 }

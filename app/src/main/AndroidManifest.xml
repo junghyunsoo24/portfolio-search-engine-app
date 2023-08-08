@@ -15,17 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Childemotionapp"
         tools:targetApi="31">
+
         <activity
-            android:name=".AIChatActivity"
+            android:name=".child.AIChatActivity"
             android:exported="false"
             android:parentActivityName=".child.ChildActivity"/>
         <activity
             android:name=".MypageActivity"
-            android:parentActivityName=".AIChatActivity">
+            android:parentActivityName=".child.AIChatActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AIChatActivity" />
+                android:value=".child.AIChatActivity" />
         </activity>
+
 
         <activity
             android:name=".child.ChildActivity"
@@ -39,10 +41,22 @@
             android:name=".manager.ManagerActivity"
             android:exported="false"
             android:parentActivityName=".LoginActivity" />
+
+
         <activity
-            android:name=".RegistActivity"
+            android:name=".child.RegistActivity"
             android:exported="false"
             android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".expert.ExpertRegistActivity"
+            android:exported="false"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".manager.ManagerRegistActivity"
+            android:exported="false"
+            android:parentActivityName=".LoginActivity" />
+
+
         <activity
             android:name=".LoginActivity"
             android:exported="false"

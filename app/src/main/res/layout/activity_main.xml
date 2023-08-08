@@ -7,7 +7,6 @@
     android:background="#FFFFE0"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="158dp"
@@ -76,6 +75,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expert_btn" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.child_emotion_app
+package com.example.child_emotion_app.child
 
 import android.content.Context
 import android.content.Intent
@@ -12,9 +12,13 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.child_emotion_app.data.Message
+import com.example.child_emotion_app.MessageAdapter
+import com.example.child_emotion_app.MypageActivity
+import com.example.child_emotion_app.R
+import com.example.child_emotion_app.data.message.Message
 import com.example.child_emotion_app.databinding.ActivityAichatBinding
 import com.example.child_emotion_app.model.AppViewModel
+import com.example.child_emotion_app.service.message.MyApi
 import kotlinx.coroutines.launch
 
 class AIChatActivity : AppCompatActivity() {

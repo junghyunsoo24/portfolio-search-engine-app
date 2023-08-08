@@ -9,11 +9,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.child_emotion_app.child.ChildActivity
-import com.example.child_emotion_app.data.Login
-import com.example.child_emotion_app.databinding.ActivityLoginBinding
+import com.example.child_emotion_app.child.RegistActivity
+import com.example.child_emotion_app.data.login.Login
 import com.example.child_emotion_app.expert.ExpertActivity
 import com.example.child_emotion_app.manager.ManagerActivity
 import com.example.child_emotion_app.model.AppViewModel
+import com.example.child_emotion_app.service.login.MeApi
+import com.example.child_emotion_app.databinding.ActivityLoginBinding
+import com.example.child_emotion_app.expert.ExpertRegistActivity
+import com.example.child_emotion_app.manager.ManagerRegistActivity
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -86,7 +90,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onJoinButtonClicked() {
-        val intent = Intent(this, RegistActivity::class.java)
+        val intent: Intent
+        if(viewModel.getUser().value == "0") {
+            intent = Intent(this, RegistActivity::class.java)
+        }
+        else if(viewModel.getUser().value == "1"){
+            intent = Intent(this, ExpertRegistActivity::class.java)
+        }
+        else{
+            intent = Intent(this, ManagerRegistActivity::class.java)
+        }
         startActivity(intent)
     }
 

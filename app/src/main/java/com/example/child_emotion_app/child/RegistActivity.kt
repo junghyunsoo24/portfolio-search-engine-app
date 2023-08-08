@@ -1,16 +1,18 @@
-package com.example.child_emotion_app
+package com.example.child_emotion_app.child
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
-import com.example.child_emotion_app.data.Regist
+import com.example.child_emotion_app.LoginActivity
+import com.example.child_emotion_app.R
+import com.example.child_emotion_app.data.regist.Regist
 import com.example.child_emotion_app.databinding.ActivityRegistBinding
+import com.example.child_emotion_app.service.regist.RegistApi
 import kotlinx.coroutines.launch
 
 class RegistActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -26,7 +28,6 @@ class RegistActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var text: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_regist)
 
         val binding = ActivityRegistBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,8 +37,6 @@ class RegistActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
 
-        val regist : Button = findViewById(R.id.regist_btn)
-
         val genders = arrayOf("남", "여")
         val spinner = findViewById<Spinner>(R.id.spinner_gender)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, genders)
@@ -45,7 +44,7 @@ class RegistActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinner.adapter = adapter
         spinner.onItemSelectedListener = this
 
-        regist.setOnClickListener {
+        binding.registBtn.setOnClickListener {
             id = binding.firstIdInput.text.toString()
             pw = binding.firstPwdInput.text.toString()
             name = binding.nameInput.text.toString()
@@ -60,7 +59,12 @@ class RegistActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
     }
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+    override fun onItemSelected(
+        parent: AdapterView<*>?,
+        view: android.view.View?,
+        position: Int,
+        id: Long
+    ) {
         gender = parent?.getItemAtPosition(position).toString()
     }
 
@@ -68,21 +72,19 @@ class RegistActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     }
 
-    fun onRegistButtonClicked(){
+    fun onRegistButtonClicked() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 
     private fun showAlertDialog(message: String) {
-        Log.e("AlertDialog", "message: $message")
-
         val builder = AlertDialog.Builder(this)
         builder.setTitle(message)
         builder.setMessage("회원가입 성공")
 
         builder.setPositiveButton("확인") { dialog, _ ->
-            dialog.dismiss() // 다이얼로그를 닫습니다.
-            onRegistButtonClicked() // 다음 화면으로 넘어가는 함수 호출
+            dialog.dismiss()
+            onRegistButtonClicked()
         }
 
         builder.show()
