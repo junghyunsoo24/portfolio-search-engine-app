@@ -18,6 +18,7 @@ import com.example.child_emotion_app.service.login.MeApi
 import com.example.child_emotion_app.databinding.ActivityLoginBinding
 import com.example.child_emotion_app.expert.ExpertRegistActivity
 import com.example.child_emotion_app.manager.ManagerRegistActivity
+import com.example.child_emotion_app.service.login.ExpertLoginApi
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -45,7 +46,14 @@ class LoginActivity : AppCompatActivity() {
         login.setOnClickListener {
             id = binding.idInput.text.toString()
             pw = binding.pwdInput.text.toString()
-            mobileToServer()
+
+            if(viewModel.getUser().value == "0") {
+                mobileToServer()
+            }
+            else if(viewModel.getUser().value == "1"){
+                expertMobileToServer()
+            }
+
         }
 
         join.setOnClickListener {
@@ -108,6 +116,31 @@ class LoginActivity : AppCompatActivity() {
             try {
                 val message = Login(id, pw)
                 val response = MeApi.retrofitService.sendsMessage(message)
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        val responseData = responseBody.result
+                        showAlertDialog(responseData)
+
+                        viewModel.setUserId(id)
+                        viewModel.setUserPwd(pw)
+                    } else {
+                        Log.e("@@@@Error3", "Response body is null")
+                    }
+                } else {
+                    Log.e("@@@@Error2", "Response not successful: ${response.code()}")
+                }
+            } catch (Ex: Exception) {
+                Log.e("@@@@Error1", Ex.stackTraceToString())
+            }
+        }
+    }
+
+    private fun expertMobileToServer() {
+        lifecycleScope.launch {
+            try {
+                val message = Login(id, pw)
+                val response = ExpertLoginApi.retrofitService.sendsMessage(message)
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
