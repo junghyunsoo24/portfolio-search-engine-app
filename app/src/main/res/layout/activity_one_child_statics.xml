@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/child_list"
+        android:layout_width="278dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:text="한아동 통계"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/child_id_input"
+        android:layout_width="330dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="찾을 어린이에 아이디를 입력하세요."
+        android:inputType="text"
+        android:textSize="20sp"
+
+        android:imeOptions="actionDone"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/child_list" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/emotionTextView"
+        android:layout_width="335dp"
+        android:layout_height="447dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/child_id_input" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

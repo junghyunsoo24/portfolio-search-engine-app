@@ -31,7 +31,7 @@ class ExpertActivity : AppCompatActivity() {
         }
 
         binding.oneChildBtn.setOnClickListener {
-            onOneChildListButtonClicked()
+            onOneChildStaticsButtonClicked()
         }
     }
 
@@ -56,8 +56,8 @@ class ExpertActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun onOneChildListButtonClicked(){
-        val intent = Intent(this, OneChildListActivity::class.java)
+    fun onOneChildStaticsButtonClicked(){
+        val intent = Intent(this, OneChildStaticsActivity::class.java)
         startActivity(intent)
     }
 }

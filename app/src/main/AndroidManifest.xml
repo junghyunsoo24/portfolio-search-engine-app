@@ -61,6 +61,10 @@
             android:name=".expert.ChildListActivity"
             android:exported="false"
             android:parentActivityName=".expert.ExpertActivity" />
+        <activity
+            android:name=".expert.OneChildStaticsActivity"
+            android:exported="false"
+            android:parentActivityName=".expert.ExpertActivity" />
 
 
         <activity
