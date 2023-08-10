@@ -58,6 +58,12 @@
 
 
         <activity
+            android:name=".expert.ChildListActivity"
+            android:exported="false"
+            android:parentActivityName=".expert.ExpertActivity" />
+
+
+        <activity
             android:name=".LoginActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
@@ -70,6 +76,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

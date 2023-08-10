@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import com.example.child_emotion_app.child.AIChatActivity
 import com.example.child_emotion_app.MypageActivity
 import com.example.child_emotion_app.R
 import com.example.child_emotion_app.databinding.ActivityExpertBinding
@@ -28,11 +27,11 @@ class ExpertActivity : AppCompatActivity() {
         viewModel = AppViewModel.getInstance()
 
         binding.allChildBtn.setOnClickListener {
-//            onAIButtonClicked()
+            onChildListButtonClicked()
         }
 
         binding.oneChildBtn.setOnClickListener {
-//            onAIButtonClicked()
+            onOneChildListButtonClicked()
         }
     }
 
@@ -52,8 +51,13 @@ class ExpertActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun onAIButtonClicked(){
-        val intent = Intent(this, AIChatActivity::class.java)
+    fun onChildListButtonClicked(){
+        val intent = Intent(this, ChildListActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onOneChildListButtonClicked(){
+        val intent = Intent(this, OneChildListActivity::class.java)
         startActivity(intent)
     }
 }
