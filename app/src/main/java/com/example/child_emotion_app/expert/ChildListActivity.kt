@@ -1,10 +1,15 @@
 package com.example.child_emotion_app.expert
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.child_emotion_app.MypageActivity
+import com.example.child_emotion_app.R
 import com.example.child_emotion_app.data.childList.Child
 import com.example.child_emotion_app.data.childList.ChildList
 import com.example.child_emotion_app.databinding.ActivityChildListBinding
@@ -69,5 +74,21 @@ class ChildListActivity : AppCompatActivity() {
                 Log.e("@@@@Error1", Ex.stackTraceToString())
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.mypage_btn -> {
+                val intent = Intent(this, MypageActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
