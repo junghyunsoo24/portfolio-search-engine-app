@@ -1,4 +1,4 @@
-package com.example.child_emotion_app
+package com.example.child_emotion_app.adapter
 
 import android.view.LayoutInflater
 import android.view.View

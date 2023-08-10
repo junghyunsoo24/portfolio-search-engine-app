@@ -8,8 +8,10 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.child_emotion_app.MypageActivity
 import com.example.child_emotion_app.R
+import com.example.child_emotion_app.adapter.ChildListAdapter
 import com.example.child_emotion_app.data.childList.Child
 import com.example.child_emotion_app.data.childList.ChildList
 import com.example.child_emotion_app.databinding.ActivityChildListBinding
@@ -39,6 +41,11 @@ class ChildListActivity : AppCompatActivity() {
 
         id = viewModel.getUserId().value.toString()
 
+        val layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = layoutManager
+        val adapter = ChildListAdapter(emptyList())
+        binding.recyclerView.adapter = adapter
+
         mobileToServer()
     }
 
@@ -54,15 +61,9 @@ class ChildListActivity : AppCompatActivity() {
                         val responseData = responseBody.child
                         result = responseData
 
-                        // 문자열 형태로 결과 값을 구성
-                        val resultText = StringBuilder()
-                        for (child in result) {
-                            val childInfo = "이름: ${child.name}\n 아이디: ${child.id}\n 비밀번호: ${child.pw}\n" +
-                                    "이메일: ${child.email}\n 상태: ${child.institution}\n"
-                            resultText.append(childInfo).append("\n")
-                        }
-
-                        binding.childListResponse.text = resultText.toString()
+                        val adapter = binding.recyclerView.adapter as ChildListAdapter
+                        adapter.childList = result // 어댑터에 데이터 설정
+                        adapter.notifyDataSetChanged()
 
                     } else {
                         Log.e("@@@@Error3", "Response body is null")

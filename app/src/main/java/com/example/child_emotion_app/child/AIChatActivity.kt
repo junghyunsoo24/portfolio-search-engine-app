@@ -12,7 +12,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.child_emotion_app.MessageAdapter
+import com.example.child_emotion_app.adapter.MessageAdapter
 import com.example.child_emotion_app.MypageActivity
 import com.example.child_emotion_app.R
 import com.example.child_emotion_app.data.message.Message
