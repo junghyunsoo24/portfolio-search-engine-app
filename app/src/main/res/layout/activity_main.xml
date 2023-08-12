@@ -37,7 +37,7 @@
         android:id="@+id/sub_title"
         android:layout_width="295dp"
         android:layout_height="56dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="아동학대 모니터링"
         android:textSize="35sp"
@@ -49,10 +49,11 @@
         android:id="@+id/child_btn"
         android:layout_width="275dp"
         android:layout_height="64dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="36dp"
         android:text="아동으로 시작하기"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sub_title" />
 
