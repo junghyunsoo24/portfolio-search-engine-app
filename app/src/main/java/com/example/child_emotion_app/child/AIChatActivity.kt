@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.ActionBar
@@ -19,6 +20,7 @@ import com.example.child_emotion_app.data.message.Message
 import com.example.child_emotion_app.databinding.ActivityAichatBinding
 import com.example.child_emotion_app.model.AppViewModel
 import com.example.child_emotion_app.service.message.MyApi
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import kotlinx.coroutines.launch
 
 class AIChatActivity : AppCompatActivity() {
@@ -64,7 +66,6 @@ class AIChatActivity : AppCompatActivity() {
         }
 
         Log.e("recycler", viewModel.getMessageList().value.toString())
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -117,5 +118,12 @@ class AIChatActivity : AppCompatActivity() {
         binding.chatRecyclerView.post {
             binding.chatRecyclerView.smoothScrollToPosition(adapter.itemCount - 1)
         }
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        val imm: InputMethodManager =
+            getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        return super.dispatchTouchEvent(ev)
     }
 }

@@ -19,13 +19,15 @@
         <activity
             android:name=".SearchActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
 
 
         <activity
             android:name=".child.AIChatActivity"
             android:exported="false"
-            android:parentActivityName=".child.ChildActivity"/>
+            android:parentActivityName=".child.ChildActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
         <activity
             android:name=".MypageActivity"
             android:parentActivityName=".child.AIChatActivity">

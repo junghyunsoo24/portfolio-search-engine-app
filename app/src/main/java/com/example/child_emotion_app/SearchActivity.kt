@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.ActionBar
@@ -41,15 +42,15 @@ class SearchActivity : AppCompatActivity() {
         binding.chatRecyclerView.adapter = adapter
         binding.chatRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        binding.talkInput.setOnEditorActionListener { _, actionId, _ ->
+        binding.searchInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                input = binding.talkInput.text.toString()
+                input = binding.searchInput.text.toString()
                 val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.hideSoftInputFromWindow(binding.talkInput.windowToken, 0)
+                inputMethodManager.hideSoftInputFromWindow(binding.searchInput.windowToken, 0)
                 if (input.isNotBlank()) {
                     mobileToServer()
 
-                    binding.talkInput.text = null
+                    binding.searchInput.text = null
                 }
                 true
             } else {
@@ -116,5 +117,12 @@ class SearchActivity : AppCompatActivity() {
         binding.chatRecyclerView.post {
             binding.chatRecyclerView.smoothScrollToPosition(adapter.itemCount - 1)
         }
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        val imm: InputMethodManager =
+            getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        return super.dispatchTouchEvent(ev)
     }
 }
