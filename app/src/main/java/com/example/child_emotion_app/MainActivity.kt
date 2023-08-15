@@ -31,10 +31,19 @@ class MainActivity : AppCompatActivity() {
             viewModel.setUser("2")
             onStartButtonClicked()
         }
+
+        binding.searchButton.setOnClickListener {
+            onSearchButtonClicked()
+        }
     }
 
     fun onStartButtonClicked() {
         val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onSearchButtonClicked() {
+        val intent = Intent(this, SearchActivity::class.java)
         startActivity(intent)
     }
 }
