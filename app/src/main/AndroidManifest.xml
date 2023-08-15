@@ -21,6 +21,11 @@
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity
+            android:name=".SearchRegistActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
 
 
         <activity

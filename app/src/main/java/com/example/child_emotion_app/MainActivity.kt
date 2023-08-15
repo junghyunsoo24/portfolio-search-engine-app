@@ -35,6 +35,10 @@ class MainActivity : AppCompatActivity() {
         binding.searchButton.setOnClickListener {
             onSearchButtonClicked()
         }
+
+        binding.searchRegistButton.setOnClickListener {
+            onSearchRegistButtonClicked()
+        }
     }
 
     fun onStartButtonClicked() {
@@ -44,6 +48,11 @@ class MainActivity : AppCompatActivity() {
 
     fun onSearchButtonClicked() {
         val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onSearchRegistButtonClicked(){
+        val intent = Intent(this, SearchRegistActivity::class.java)
         startActivity(intent)
     }
 }
