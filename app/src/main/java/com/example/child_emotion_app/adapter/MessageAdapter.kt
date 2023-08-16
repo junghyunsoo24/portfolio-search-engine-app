@@ -5,23 +5,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.child_emotion_app.R
+import com.example.child_emotion_app.data.message.MessageResponse
+
 
 class MessageAdapter(private val messages: List<String>) :
     RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val messageTextView: TextView = itemView.findViewById(android.R.id.text1)
+        val messageItemTextView: TextView = itemView.findViewById(R.id.messageTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(android.R.layout.simple_list_item_1, parent, false)
+            .inflate(R.layout.item_message, parent, false)
         return MessageViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = messages[position]
-        holder.messageTextView.text = message
+        holder.messageItemTextView.text = message
     }
 
     override fun getItemCount(): Int = messages.size
