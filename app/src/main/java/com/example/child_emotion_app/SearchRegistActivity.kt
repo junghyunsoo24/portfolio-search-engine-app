@@ -1,5 +1,6 @@
 package com.example.child_emotion_app
 
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -56,6 +57,14 @@ class SearchRegistActivity : AppCompatActivity() {
             } else {
                 false
             }
+
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = clipboardManager.primaryClip
+            if (clipData != null && clipData.itemCount > 0) {
+                val pastedText = clipData.getItemAt(0).text.toString()
+                binding.searchRegistInput.setText(pastedText)
+            }
+            true
         }
 
         val actionBar: ActionBar? = supportActionBar
@@ -63,7 +72,7 @@ class SearchRegistActivity : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
 
-        Log.e("recycler", viewModel.getMessageList().value.toString())
+        //Log.e("recycler", viewModel.getMessageList().value.toString())
 
     }
 
@@ -94,7 +103,7 @@ class SearchRegistActivity : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         val responseData = responseBody.response
-                        messages.add(input)
+                        messages.add(input+"\n")
                         viewModel.setMessageList(messages)
                         adapter.notifyDataSetChanged()
                         scrollToBottom()

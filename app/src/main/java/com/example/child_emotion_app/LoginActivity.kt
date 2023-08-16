@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
             onJoinButtonClicked()
         }
 
-        viewModel.getUser().value?.let { Log.e("user", it) }
+        //viewModel.getUser().value?.let { Log.e("user", it) }
     }
 
     private fun showAlertDialog(message: String) {

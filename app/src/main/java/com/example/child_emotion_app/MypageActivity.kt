@@ -27,7 +27,7 @@ class MypageActivity : AppCompatActivity() {
         binding.memberId.text = "아이디: " + viewModel.getUserId().value
 
         viewModel.getUserId().value?.let { Log.e("mypage", it) }
-        Log.e("recycler", viewModel.getMessageList().value.toString())
+        //Log.e("recycler", viewModel.getMessageList().value.toString())
 
         binding.logoutBtn.setOnClickListener {
             val builder = AlertDialog.Builder(this)
