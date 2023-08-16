@@ -57,7 +57,9 @@ class SearchRegistActivity : AppCompatActivity() {
             } else {
                 false
             }
+        }
 
+        binding.searchRegistInput.setOnLongClickListener {
             val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData = clipboardManager.primaryClip
             if (clipData != null && clipData.itemCount > 0) {
@@ -75,6 +77,8 @@ class SearchRegistActivity : AppCompatActivity() {
         //Log.e("recycler", viewModel.getMessageList().value.toString())
 
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)

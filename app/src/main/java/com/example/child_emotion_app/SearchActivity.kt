@@ -11,6 +11,7 @@ import android.view.MotionEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +20,6 @@ import com.example.child_emotion_app.data.Search
 import com.example.child_emotion_app.databinding.ActivitySearchBinding
 import com.example.child_emotion_app.model.AppViewModel
 import com.example.child_emotion_app.service.SearchApi
-import com.example.child_emotion_app.service.message.MyApi
 import kotlinx.coroutines.launch
 
 class SearchActivity : AppCompatActivity() {
@@ -57,7 +57,9 @@ class SearchActivity : AppCompatActivity() {
             } else {
                 false
             }
+        }
 
+        binding.searchInput.setOnLongClickListener {
             val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData = clipboardManager.primaryClip
             if (clipData != null && clipData.itemCount > 0) {
@@ -110,6 +112,7 @@ class SearchActivity : AppCompatActivity() {
                         viewModel.setMessageList(messages)
 
                         scrollToBottom()
+                        showAlertDialog(responseData)
                     } else {
                         Log.e("@@@@Error3", "Response body is null")
                     }
@@ -133,5 +136,24 @@ class SearchActivity : AppCompatActivity() {
             getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         return super.dispatchTouchEvent(ev)
+    }
+
+    private fun showAlertDialog(message: List<String>) {
+        val builder = AlertDialog.Builder(this)
+        if (message.isEmpty()) {
+            builder.setTitle("검색 실패")
+            builder.setMessage("문서를 찾을 수 없습니다")
+            builder.setPositiveButton("확인") { dialog, _ ->
+                dialog.dismiss()
+            }
+        } else {
+            builder.setTitle("검색 성공")
+            builder.setMessage("문서가 검색되었습니다")
+            builder.setPositiveButton("확인") { dialog, _ ->
+                dialog.dismiss()
+            }
+        }
+
+        builder.show()
     }
 }
