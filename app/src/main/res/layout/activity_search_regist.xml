@@ -7,26 +7,26 @@
     android:background="#87CEEB"
     tools:context=".SearchRegistActivity">
 
+
     <TextView
         android:id="@+id/search_regist"
         android:layout_width="278dp"
         android:layout_height="64dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="등록하기"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.007"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/search_regist_input"
         android:layout_width="295dp"
         android:layout_height="56dp"
-        android:layout_marginTop="456dp"
+        android:layout_marginTop="524dp"
         android:gravity="center"
         android:hint="등록할 내용을 입력하세요"
         android:inputType="textPersonName"
@@ -37,12 +37,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
-        android:layout_width="408dp"
-        android:layout_height="430dp"
+        android:layout_width="386dp"
+        android:layout_height="500dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/search_regist_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

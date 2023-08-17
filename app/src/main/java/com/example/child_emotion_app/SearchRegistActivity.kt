@@ -107,7 +107,7 @@ class SearchRegistActivity : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         val responseData = responseBody.response
-                        messages.add(input+"\n")
+                        messages.add("<등록한 내용>:\n$input\n\n")
                         viewModel.setMessageList(messages)
                         adapter.notifyDataSetChanged()
                         scrollToBottom()

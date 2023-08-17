@@ -20,6 +20,8 @@ import com.example.child_emotion_app.data.Search
 import com.example.child_emotion_app.databinding.ActivitySearchBinding
 import com.example.child_emotion_app.model.AppViewModel
 import com.example.child_emotion_app.service.SearchApi
+import com.example.child_emotion_app.service.SearchManApi
+import com.example.child_emotion_app.service.SearchUclApi
 import kotlinx.coroutines.launch
 
 class SearchActivity : AppCompatActivity() {
@@ -100,13 +102,21 @@ class SearchActivity : AppCompatActivity() {
                 val message = Search(input)
 
                 val response = SearchApi.retrofitService.sendsMessage(message)
+                val responseM = SearchManApi.retrofitService.sendsMessage(message)
+                val responseU= SearchUclApi.retrofitService.sendsMessage(message)
 
-                if (response.isSuccessful) {
+                if (response.isSuccessful && responseM.isSuccessful && responseU.isSuccessful) {
                     val responseBody = response.body()
+                    val responseBodyM = responseM.body()
+                    val responseBodyU = responseU.body()
                     if (responseBody != null) {
                         val responseData = responseBody.documents
-                        messages.add(input)
-                        messages.add(responseData.toString()+"\n")
+                        val responseDataM = responseBodyM?.documents
+                        val responseDataU = responseBodyU?.documents
+                        messages.add("<검색>:\n $input")
+                        messages.add("<cos 결과>:\n $responseData")
+                        messages.add("<man 결과>:\n $responseDataM")
+                        messages.add("<ucl 결과>:\n $responseDataU\n\n")
                         adapter.notifyDataSetChanged()
 
                         viewModel.setMessageList(messages)

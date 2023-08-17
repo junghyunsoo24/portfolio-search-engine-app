@@ -65,7 +65,7 @@ class AIChatActivity : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
 
-        Log.e("recycler", viewModel.getMessageList().value.toString())
+        //Log.e("recycler", viewModel.getMessageList().value.toString())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
