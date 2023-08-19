@@ -9,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.child_emotion_app.child.AIChatActivity
 import com.example.child_emotion_app.MypageActivity
 import com.example.child_emotion_app.R
+import com.example.child_emotion_app.databinding.ActivityExpertBinding
 import com.example.child_emotion_app.databinding.ActivityManagerBinding
+import com.example.child_emotion_app.expert.ChildListActivity
+import com.example.child_emotion_app.expert.OneChildStaticsActivity
 import com.example.child_emotion_app.model.AppViewModel
 
 class ManagerActivity : AppCompatActivity() {
@@ -27,13 +30,18 @@ class ManagerActivity : AppCompatActivity() {
 
         viewModel = AppViewModel.getInstance()
 
-        binding.registExpertBtn.setOnClickListener {
-//            onAIButtonClicked()
+        binding.checkExpertBtn.setOnClickListener {
+            onExpertListButtonClicked()
         }
 
-        binding.checkExpertBtn.setOnClickListener {
-//            onAIButtonClicked()
+        binding.checkChildBtn.setOnClickListener {
+            onNoAllocateChildListButtonClicked()
         }
+
+        binding.childWithExpertBtn.setOnClickListener {
+            onAllocateButtonClicked()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -52,8 +60,18 @@ class ManagerActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun onAIButtonClicked(){
-        val intent = Intent(this, AIChatActivity::class.java)
+    fun onExpertListButtonClicked(){
+        val intent = Intent(this, ExpertListActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onNoAllocateChildListButtonClicked(){
+        val intent = Intent(this, NoAllocateChildListActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onAllocateButtonClicked(){
+        val intent = Intent(this, AllocateListActivity::class.java)
         startActivity(intent)
     }
 }

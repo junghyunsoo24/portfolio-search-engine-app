@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".manager.ManagerActivity"
+    tools:context=".manager.AllocateListActivity"
     android:background="#FFFFFF">
 
     <TextView
-        android:id="@+id/manager_regist"
+        android:id="@+id/manager_allocate"
         android:layout_width="278dp"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"
-        android:text="관리자 회원가입"
+        android:text="아동 할당"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.644"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manager_regist">
+        app:layout_constraintTop_toBottomOf="@+id/manager_allocate">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,52 +36,52 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/first_manager_id"
+                android:id="@+id/allocate_child_id"
                 android:layout_width="295dp"
                 android:layout_height="56dp"
-                android:text="아이디"
+                android:text="아동 아이디"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="26dp"
                 tools:layout_editor_absoluteY="127dp" />
 
             <EditText
-                android:id="@+id/first_manager_id_input"
+                android:id="@+id/allocate_child_id_input"
                 android:layout_width="240dp"
                 android:layout_height="60dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="아이디를 입력하세요."
+                android:hint="아동 아이디를 입력하세요."
                 android:inputType="text"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="54dp"
                 tools:layout_editor_absoluteY="160dp" />
 
             <TextView
-                android:id="@+id/first_manager_pwd"
+                android:id="@+id/allocate_expert_id"
                 android:layout_width="295dp"
                 android:layout_height="56dp"
-                android:text="비밀번호"
+                android:text="전문가 아이디"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="26dp"
                 tools:layout_editor_absoluteY="234dp" />
 
             <EditText
-                android:id="@+id/first_manager_pwd_input"
+                android:id="@+id/allocate_expert_id_input"
                 android:layout_width="240dp"
                 android:layout_height="60dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="비밀번호를 입력하세요."
+                android:hint="전문가 아이디를 입력하세요."
                 android:inputType="textPassword"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="54dp"
                 tools:layout_editor_absoluteY="274dp" />
 
             <Button
-                android:id="@+id/manager_regist_btn"
+                android:id="@+id/allocate_btn"
                 android:layout_width="275dp"
                 android:layout_height="64dp"
-                android:text="관리자 회원가입 하기"
+                android:text="아동 할당하기"
                 android:textSize="24sp"
                 tools:layout_editor_absoluteX="68dp"
                 tools:layout_editor_absoluteY="633dp" />

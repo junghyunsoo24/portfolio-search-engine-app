@@ -81,6 +81,21 @@
 
 
         <activity
+            android:name=".manager.ExpertListActivity"
+            android:exported="false"
+            android:parentActivityName=".manager.ManagerActivity" />
+        <activity
+            android:name=".manager.NoAllocateChildListActivity"
+            android:exported="false"
+            android:parentActivityName=".manager.ManagerActivity" />
+        <activity
+            android:name=".manager.AllocateListActivity"
+            android:exported="false"
+            android:parentActivityName=".manager.ManagerActivity" />
+
+
+
+        <activity
             android:name=".LoginActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />

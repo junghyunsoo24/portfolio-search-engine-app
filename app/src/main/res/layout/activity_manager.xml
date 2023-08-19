@@ -46,11 +46,11 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <Button
-        android:id="@+id/regist_expert_btn"
+        android:id="@+id/check_child_btn"
         android:layout_width="275dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
-        android:text="전문가 등록하기"
+        android:text="아동 목록 조회"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,6 +65,16 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regist_expert_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/check_child_btn" />
+
+    <Button
+        android:id="@+id/child_with_expert_btn"
+        android:layout_width="275dp"
+        android:layout_height="64dp"
+        android:text="아동 할당"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_expert_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

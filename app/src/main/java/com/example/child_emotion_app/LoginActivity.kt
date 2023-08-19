@@ -19,6 +19,8 @@ import com.example.child_emotion_app.databinding.ActivityLoginBinding
 import com.example.child_emotion_app.expert.ExpertRegistActivity
 import com.example.child_emotion_app.manager.ManagerRegistActivity
 import com.example.child_emotion_app.service.login.ExpertLoginApi
+import com.example.child_emotion_app.service.login.ManagerLoginApi
+import com.example.child_emotion_app.service.regist.ManagerRegistApi
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -52,6 +54,9 @@ class LoginActivity : AppCompatActivity() {
             }
             else if(viewModel.getUser().value == "1"){
                 expertMobileToServer()
+            }
+            else if(viewModel.getUser().value == "2"){
+                managerMobileToServer()
             }
 
         }
@@ -141,6 +146,31 @@ class LoginActivity : AppCompatActivity() {
             try {
                 val message = Login(id, pw)
                 val response = ExpertLoginApi.retrofitService.sendsMessage(message)
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        val responseData = responseBody.result
+                        showAlertDialog(responseData)
+
+                        viewModel.setUserId(id)
+                        viewModel.setUserPwd(pw)
+                    } else {
+                        Log.e("@@@@Error3", "Response body is null")
+                    }
+                } else {
+                    Log.e("@@@@Error2", "Response not successful: ${response.code()}")
+                }
+            } catch (Ex: Exception) {
+                Log.e("@@@@Error1", Ex.stackTraceToString())
+            }
+        }
+    }
+
+    private fun managerMobileToServer() {
+        lifecycleScope.launch {
+            try {
+                val message = Login(id, pw)
+                val response = ManagerLoginApi.retrofitService.sendsMessage(message)
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
