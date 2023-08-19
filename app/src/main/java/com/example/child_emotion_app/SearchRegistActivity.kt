@@ -15,7 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.child_emotion_app.adapter.MessageAdapter
+import com.example.child_emotion_app.adapter.SearchAdapter
 import com.example.child_emotion_app.data.SearchRegist
 import com.example.child_emotion_app.databinding.ActivitySearchRegistBinding
 import com.example.child_emotion_app.model.AppViewModel
@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 class SearchRegistActivity : AppCompatActivity() {
     private lateinit var input: String
 
-    private lateinit var adapter: MessageAdapter
+    private lateinit var adapter: SearchAdapter
     private val messages = mutableListOf<String>()
     private lateinit var binding: ActivitySearchRegistBinding
 
@@ -39,7 +39,7 @@ class SearchRegistActivity : AppCompatActivity() {
 
         viewModel = AppViewModel.getInstance()
 
-        adapter = MessageAdapter(messages)
+        adapter = SearchAdapter(messages)
         binding.chatRecyclerView.adapter = adapter
         binding.chatRecyclerView.layoutManager = LinearLayoutManager(this)
 

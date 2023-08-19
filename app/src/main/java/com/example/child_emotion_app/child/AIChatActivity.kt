@@ -17,6 +17,7 @@ import com.example.child_emotion_app.adapter.MessageAdapter
 import com.example.child_emotion_app.MypageActivity
 import com.example.child_emotion_app.R
 import com.example.child_emotion_app.data.message.Message
+import com.example.child_emotion_app.data.message.MessagePair
 import com.example.child_emotion_app.databinding.ActivityAichatBinding
 import com.example.child_emotion_app.model.AppViewModel
 import com.example.child_emotion_app.service.message.MyApi
@@ -27,7 +28,7 @@ class AIChatActivity : AppCompatActivity() {
     private lateinit var input: String
 
     private lateinit var adapter: MessageAdapter
-    private val messages = mutableListOf<String>()
+    private val messages = mutableListOf<MessagePair>()
     private lateinit var binding: ActivityAichatBinding
 
     private lateinit var viewModel: AppViewModel
@@ -95,12 +96,11 @@ class AIChatActivity : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         val responseData = responseBody.bot
-                        messages.add(input)
-                        messages.add(responseData)
+
+                        val messagePair = MessagePair(input, responseData)
+                        messages.add(messagePair)
+
                         adapter.notifyDataSetChanged()
-
-                        viewModel.setMessageList(messages)
-
                         scrollToBottom()
                     } else {
                         Log.e("@@@@Error3", "Response body is null")

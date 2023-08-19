@@ -46,15 +46,27 @@
         app:layout_constraintTop_toBottomOf="@+id/member_name" />
 
     <Button
+        android:id="@+id/change_btn"
+        android:layout_width="275dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="84dp"
+        android:text="개인 정보 수정"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/member_id" />
+
+    <Button
         android:id="@+id/logout_btn"
         android:layout_width="275dp"
         android:layout_height="64dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="16dp"
         android:text="로그아웃"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/member_id" />
+        app:layout_constraintTop_toBottomOf="@+id/change_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
