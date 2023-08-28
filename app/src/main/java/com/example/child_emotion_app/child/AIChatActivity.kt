@@ -26,6 +26,7 @@ import kotlinx.coroutines.launch
 
 class AIChatActivity : AppCompatActivity() {
     private lateinit var input: String
+    private lateinit var id: String
 
     private lateinit var adapter: MessageAdapter
     private val messages = mutableListOf<MessagePair>()
@@ -40,6 +41,8 @@ class AIChatActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = AppViewModel.getInstance()
+
+        id = viewModel.getUserId().value.toString()
 
         adapter = MessageAdapter(messages)
         binding.chatRecyclerView.adapter = adapter
@@ -88,7 +91,7 @@ class AIChatActivity : AppCompatActivity() {
     private fun mobileToServer() {
         lifecycleScope.launch {
             try {
-                val message = Message(input)
+                val message = Message(id, input)
 
                 val response = MyApi.retrofitService.sendMessage(message)
 

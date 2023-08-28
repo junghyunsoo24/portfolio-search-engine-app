@@ -33,7 +33,7 @@ private val retrofit = Retrofit.Builder()
 interface RegistService {
     @Headers("Content-Type: application/json")
 
-    @POST("/regist")
+    @POST("/signUp")
     suspend fun sendsMessage(@Body message: Regist): Response<RegistResponse>
 
 }

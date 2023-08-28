@@ -26,7 +26,7 @@ class NoAllocateChildListAdapter(var noAllocateChildList: List<Child>) :
         val child = noAllocateChildList[position]
         val childInfo = "아이디: ${child.id}\n 이름: ${child.name}\n" +
                 "핸드폰번호: ${child.phone_num}\n"+
-                "주소: ${child.address}\n 상태: ${child.sentiment}\n"
+                "주소: ${child.address}\n"
         holder.noAllocatechildInfoTextView.text = childInfo
     }
 

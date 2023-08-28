@@ -24,7 +24,9 @@ class ChildListAdapter(var childList: List<Child>) :
     override fun onBindViewHolder(holder: ChildViewHolder, position: Int) {
         val child = childList[position]
         val childInfo = "이름: ${child.name}\n 아이디: ${child.id}\n 비밀번호: ${child.pw}\n" +
-                "이메일: ${child.email}\n 상태: ${child.institution}\n"
+                "주소: ${child.address}\n 핸드폰번호: ${child.phone_num}\n 위험 상태: ${child.at_risk_child_status}\n"+
+                "감정: ${child.sentiment}\n"
+
         holder.childInfoTextView.text = childInfo
     }
 

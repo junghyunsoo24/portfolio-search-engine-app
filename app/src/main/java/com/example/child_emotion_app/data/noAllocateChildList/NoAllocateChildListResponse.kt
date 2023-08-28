@@ -8,6 +8,5 @@ data class Child(
     val id: String,
     val name: String,
     val phone_num: String,
-    val address: String,
-    val sentiment: String
+    val address: String
 )
